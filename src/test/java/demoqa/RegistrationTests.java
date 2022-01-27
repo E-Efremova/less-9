@@ -16,21 +16,10 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationTests {
-    @BeforeAll
-    static void beforeAll() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
-        Configuration.browserSize = "1920x1080";
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-        Configuration.browserCapabilities=capabilities;
-        Configuration.remote="https://user1:1234@selenoid.autotests.cloud/wd/hub";
-    }
     @Test
     void successTest(){
-        open("https://demoqa.com/automation-practice-form");
+        open("/automation-practice-form");
         $("#firstName").setValue("Alex");
         $("#lastName").setValue("Ivanov");
         $("#userEmail").setValue("Test@mail.ru");
@@ -66,13 +55,7 @@ public class RegistrationTests {
 
 
     }
-    @AfterEach
-    void addAttachments() {
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        Attach.addVideo();
-        closeWebDriver();
-    }
+
+
 
 }
