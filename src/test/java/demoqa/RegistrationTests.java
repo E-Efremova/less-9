@@ -1,21 +1,10 @@
 package demoqa;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import helpers.Attach;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.io.File;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-public class RegistrationTests {
+public class RegistrationTests extends TestBase{
 
     @Test
     void successTest(){
@@ -34,12 +23,10 @@ public class RegistrationTests {
         $("#subjectsInput").setValue("History").pressEnter();
         $x("//label[text()='Music']").click();
         $("#currentAddress").setValue("Tiraspol");
-       // File file = $("#uploadPicture").uploadFile(new File("src/test/java/resources/QA.jpg"));
+        // File file = $("#uploadPicture").uploadFile(new File("src/test/java/resources/QA.jpg"));
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("#react-select-4-input").setValue("Gurgaon").pressEnter();
         $("#submit").click();
-
-
 
         $("#example-modal-sizes-title-lg").shouldBe(visible);
         $(".table-responsive").shouldHave(text("Alex"));
@@ -52,10 +39,5 @@ public class RegistrationTests {
         $(".table-responsive").shouldHave(text("Tiraspol"));
         //$(".table-responsive").shouldHave(text("QA.jpg"));
         $(".table-responsive").shouldHave(text("NCR Gurgaon"));
-
-
     }
-
-
-
 }
